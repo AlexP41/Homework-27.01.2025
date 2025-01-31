@@ -31,7 +31,6 @@ int main()
     cin >> col;
 
 
-
     int** pArr = new int* [row];
 
     fullArray(row, col, pArr);
