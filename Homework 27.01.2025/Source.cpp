@@ -2,6 +2,9 @@
 #include <ctime>
 #include <iomanip>
 
+
+
+#pragma region Functions Prototypes
 using namespace std;
 
 void fullArray(int rows, int columns, int** arr);
@@ -15,6 +18,39 @@ void arrayWithoutNulls(int rowsOld, int rowsNew, int columns, int** oldArray);
 void matrix(int rows, int columns, int** arr);
 
 void newOutput(int rows, int columns, int** arr);
+
+#pragma endregion
+
+/*
+
+    ================
+    РОБОТА з РЯДКАМИ
+    ================
+
+
+№1
+    Написати функцію, що додає рядок двовимірному масиву в зазначену позицію. (new/delete)
+
+
+№2
+    Написати функцію, що видаляє рядок двовимірного масиву за вказаним номером. (vector)
+
+№3
+    Напишіть функцію для перетворення одновимірного масиву в 2-вимірний і навпаки.
+
+№4
+    Створіть динамічний масив, що зберігає в першому рядку ім'я, а в другому — телефон.
+    Організуйте пошук за ім'ям і за номером телефону та можливість введення і зміни даних.
+
+
+
+
+Навчальний матеріал можете знайти за посиланням
+    https://materials.itstep.org/content/f1811e94-507b-44c2-bfbe-ac7ac02a7178/uk
+
+Результат роботи: посилання на GitHub
+*/
+
 
 int main()
 {
@@ -50,6 +86,8 @@ int main()
 
     return 0;
 }
+
+#pragma region Functions
 
 void fullArray(int rows, int columns, int** arr)
 {
@@ -193,3 +231,5 @@ void arrayWithoutNulls(int rowsOld, int rowsNew, int columns, int** oldArray)
     }
     delete[]  newArray;
 }
+
+#pragma endregion
