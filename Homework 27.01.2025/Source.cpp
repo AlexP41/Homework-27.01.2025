@@ -1,11 +1,19 @@
 #include <iostream>
+#include <string>
 #include <ctime>
 #include <iomanip>
+#include <utility>
 
+enum MyConstants {
+    LOW_EDGE_FOR_GENERATION = -10,
+    HIGH_EDGE_FOR_GENERATION = 10,
+};
 
+using namespace std;
 
 #pragma region Functions Prototypes
-using namespace std;
+
+void exercise(int numberOfExercise);
 
 void fullArray(int rows, int columns, int** arr);
 
@@ -13,11 +21,16 @@ void outputArray(int rows, int columns, int** arr);
 
 int arrayConvertion(int rows, int columns, int** arr);
 
-void arrayWithoutNulls(int rowsOld, int rowsNew, int columns, int** oldArray);
-
-void matrix(int rows, int columns, int** arr);
-
 void newOutput(int rows, int columns, int** arr);
+
+void addNewRow(int& rows, int& columns, int& rowNumber, int**& arr);
+
+int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray);
+
+int userInputNumber(string& someText);
+
+void outputArrayWithColor(int rows, int columns, int coloredRowNumber, int** arr);
+
 
 #pragma endregion
 
@@ -27,13 +40,6 @@ void newOutput(int rows, int columns, int** arr);
     РОБОТА з РЯДКАМИ
     ================
 
-
-№1
-    Написати функцію, що додає рядок двовимірному масиву в зазначену позицію. (new/delete)
-
-
-№2
-    Написати функцію, що видаляє рядок двовимірного масиву за вказаним номером. (vector)
 
 №3
     Напишіть функцію для перетворення одновимірного масиву в 2-вимірний і навпаки.
@@ -57,37 +63,83 @@ int main()
     system("chcp 1251>null");
     srand(time(0));
 
+
+
+#pragma region Exercise 1
+    /*
+    №1
+    Написати функцію, що додає рядок двовимірному масиву в зазначену позицію. (new/delete)
+    */
+
+    exercise(1);
+
     int row, col;
 
-    cout << "Input rows: ";
-    cin >> row;
+    string textForNumberOfRows1 = "Input rows: ";
+    row = userInputNumber(textForNumberOfRows1);
 
     cout << endl;
-    cout << "Input columns: ";
-    cin >> col;
+
+    string textForNumberOfColumns1 = "Input columns: ";
+    col = userInputNumber(textForNumberOfColumns1);
 
 
-    int** pArr = new int* [row];
+    int** pArr1 = new int* [row];
 
-    fullArray(row, col, pArr);
+    fullArray(row, col, pArr1);
 
     cout << endl;
 
     cout << "\033[033mВиведення масиву: \033[0m" << endl;
 
-    outputArray(row, col, pArr);
+    outputArray(row, col, pArr1);
+
+    int userNumForNewRow;
+
+    string textForNumberOfRowsExOne = "Введіть номер нового рядка: ";
+    userNumForNewRow = userInputRowAndColumnNumber(textForNumberOfRowsExOne, row);
+
+    addNewRow(row, col, userNumForNewRow, pArr1);
+
+    cout << endl << "\033[032mРезультат з доданим новим \033[035m" << userNumForNewRow << "\033[032m рядком.\033[0m" << endl;
+    outputArrayWithColor(row, col, userNumForNewRow-1, pArr1);
+    
+    cout << endl;
+
+    exercise(2);
+
+#pragma endregion 
+
+#pragma region Exercise 2
+
+    /*
+   №2
+    Написати функцію, що видаляє рядок двовимірного масиву за вказаним номером. (vector)
+    */
 
   
 
+    exercise(2);
+
+
+
+#pragma endregion 
+
     for (int i = 0; i < row; i++) {
-        delete[] pArr[i];
+        delete[] pArr1[i];
     }
-    delete[] pArr;
+    delete[] pArr1;
 
     return 0;
 }
 
 #pragma region Functions
+
+
+void exercise(int numberOfExercise)
+{
+    cout << endl << endl << "\t\t\t\t\033[032mExercise " << numberOfExercise << "\033[0m" << endl << endl;
+}
 
 void fullArray(int rows, int columns, int** arr)
 {
@@ -96,7 +148,7 @@ void fullArray(int rows, int columns, int** arr)
         arr[i] = new int[columns];
         for (int j = 0; j < columns; j++)
         {
-            arr[i][j] = -5 + rand() % 11;
+            arr[i][j] = LOW_EDGE_FOR_GENERATION + rand() % HIGH_EDGE_FOR_GENERATION;
 
         }
     }
@@ -110,6 +162,25 @@ void outputArray(int rows, int columns, int** arr)
         {
             cout << setw(4) << arr[i][j];
 
+        }
+        cout << endl;
+    }
+}
+
+void outputArrayWithColor(int rows, int columns, int coloredRowNumber, int** arr)
+{
+    for (int i = 0; i < rows; i++) // Ітерація по РЯДКАХ
+    {
+        for (int j = 0; j < columns; j++) // Ітерація по СТОВПЦЯХ
+        {
+            if (i == coloredRowNumber)
+            {
+                cout << "\033[035m" << setw(4) << arr[i][j] << "\033[0m"; // Фіолетовий колір
+            }
+            else
+            {
+                cout << setw(4) << arr[i][j]; // Звичайний вивід
+            }
         }
         cout << endl;
     }
@@ -147,41 +218,6 @@ int arrayConvertion(int rows, int columns, int** arr)
     return count;
 }
 
-void matrix(int rows, int columns, int** arr)
-{
-    const int amount = rows * columns;
-    int* auxArr = new int[amount];
-
-    int index = 0;
-
-
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            auxArr[index] = arr[i][j];
-            index++;
-        }
-    }
-
-    cout << endl << "\033[033mМасив матриця:\033[0m" << endl;
-    index = 0;
-    for (int i = 0; i < columns; i++)
-    {
-        for (int j = 0; j < rows; j++)
-        {
-            cout << setw(5) << auxArr[index];
-            index++;
-
-        }
-        cout << endl;
-    }
-    cout << endl;
-
-
-    delete[] auxArr;
-}
-
 void matrixWithoutAuxiliaryArray(int rows, int columns, int** arr)
 {
     for (int i = 0; i < rows; i++)
@@ -194,42 +230,97 @@ void matrixWithoutAuxiliaryArray(int rows, int columns, int** arr)
     }
 }
 
-void arrayWithoutNulls(int rowsOld, int rowsNew, int columns, int** oldArray)
+void addNewRow(int& rows, int& columns,int& rowNumber, int**& arr)
 {
-    int** newArray = new int* [rowsNew];
+    rows++;
 
-    int index = 0;
-
-    for (int i = 0; i < rowsOld; i++)
+    int** newArr = new int* [rows];
+    for (size_t i = 0; i < rows; i++)
     {
-        int zero = 0;
-        for (int j = 0; j < columns; j++)
-        {
-            if (oldArray[i][j] == 0)
-            {
-                zero = 1;
-                break;
-            }
-
-        }
-        if (zero == 0)
-        {
-            newArray[index] = new int[columns];
-            for (int n = 0; n < columns; n++)
-            {
-                newArray[index][n] = oldArray[i][n];
-            }
-            index++;
-        }
+        newArr[i] = new int[columns];
     }
 
-    cout << endl << "Масив без нуликів: " << endl;
-    outputArray(rowsNew, columns, newArray);
-
-    for (int i = 0; i < rowsOld; i++) {
-        delete[] newArray[i];
+    for (size_t row = 0; row < rows; row++)
+    {
+            for (size_t col = 0; col < columns; col++)
+            {
+                if (row < rowNumber-1)
+                {
+                    newArr[row][col] = arr[row][col];
+                }
+                else if(row == rowNumber-1)  newArr[row][col] = LOW_EDGE_FOR_GENERATION + rand() % HIGH_EDGE_FOR_GENERATION;
+                else
+                {
+                    newArr[row][col] = arr[row - 1][col];
+                }
+            }
     }
-    delete[]  newArray;
+
+    for (size_t i = 0; i < rows - 1; i++)
+    {
+        delete[] arr[i];
+    }
+    delete[] arr;
+
+    arr = newArr;  
+}
+
+int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray)
+{
+    int userNum;
+
+    while (true)
+    {
+        cout << endl << "\033[033m" << someText << "\033[0m";
+        cin >> userNum;
+
+        if (cin.fail())
+        {
+            cout << endl << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userNum < 1 || userNum > numberOfRowsInArray)
+        {
+            cout << endl << "\033[031m Будь ласка введіть число у діапазоні \033[035m від 1 до " << numberOfRowsInArray << ".\033[0m" << endl;
+            continue;
+        }
+
+        break;
+    }
+
+    return userNum;
+}
+
+int userInputNumber(string& someText)
+{
+    int userNum;
+
+    while (true)
+    {
+        cout << endl << "\033[033m" << someText << "\033[0m";
+        cin >> userNum;
+
+        if (cin.fail())
+        {
+            cout << endl << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userNum < 0)
+        {
+            cout << endl << "\033[031m Будь ласка введіть число більше\033[035m 0.\033[0m" << endl;
+            continue;
+        }
+
+        break;
+    }
+
+    return userNum;
 }
 
 #pragma endregion
