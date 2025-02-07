@@ -3,6 +3,7 @@
 #include <ctime>
 #include <iomanip>
 #include <utility>
+#include <vector>
 
 enum MyConstants {
     LOW_EDGE_FOR_GENERATION = -10,
@@ -15,13 +16,17 @@ using namespace std;
 
 void exercise(int numberOfExercise);
 
-void fullArray(int rows, int columns, int** arr);
+void fullArray(int& rows, int& columns, int** arr);
 
-void outputArray(int rows, int columns, int** arr);
+void fullVector(int& rows, int& columns, vector<vector<int>>& arr);
 
-int arrayConvertion(int rows, int columns, int** arr);
+void outputArray(int& rows, int& columns, int** arr);
 
-void newOutput(int rows, int columns, int** arr);
+void outputVector(int& rows, int& columns, vector<vector<int>>& arr);
+
+int arrayConvertion(int& rows, int& columns, int** arr);
+
+void newOutput(int& rows, int& columns, int** arr);
 
 void addNewRow(int& rows, int& columns, int& rowNumber, int**& arr);
 
@@ -29,7 +34,11 @@ int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray);
 
 int userInputNumber(string& someText);
 
-void outputArrayWithColor(int rows, int columns, int coloredRowNumber, int** arr);
+void outputArrayWithColor(int& rows, int& columns, int coloredRowNumber, int** arr);
+
+void deleteRowInVector(int& rows, int& columns, int& rowToDelete, vector<vector<int>>& arr);
+
+int userInputRowAndColumnNumberToDelete(string& someText, int& numberOfRowsInArray);
 
 
 #pragma endregion
@@ -117,21 +126,87 @@ int main()
     Написати функцію, що видаляє рядок двовимірного масиву за вказаним номером. (vector)
     */
 
-  
+    int row2, col2;
 
-    exercise(2);
+    string textForNumberOfRows2 = "Input rows: ";
+    row2 = userInputNumber(textForNumberOfRows2);
+
+    cout << endl;
+
+    string textForNumberOfColumns2 = "Input columns: ";
+    col2 = userInputNumber(textForNumberOfColumns2);
+
+
+    vector<vector<int>> pArr2(row2, vector<int>(col2));
+
+    fullVector(row2, col2, pArr2);
+
+    cout << endl;
+
+    cout << "\033[033mВиведення масиву: \033[0m" << endl;
+
+    outputVector(row2, col2, pArr2);
+
+    int userNumForDelRow2;
+
+    string textForNumberOfRowsExOne2 = "Введіть номер рядка для видалення: ";
+    userNumForDelRow2 = userInputRowAndColumnNumberToDelete(textForNumberOfRowsExOne2, row2);
+
+    deleteRowInVector(row2, col2, userNumForDelRow2, pArr2);
+
+    cout << endl << "\033[032mРезультат з видаленим \033[035m" << userNumForDelRow2 << "\033[032m рядком.\033[0m" << endl;
+    outputVector(row2, col2, pArr2);
+
+    cout << endl;
+
+
+#pragma endregion
+
+#pragma region Exercise 3
+
+    exercise(3);
+    /*
+    №3
+    Напишіть функцію для перетворення одновимірного масиву в 2-вимірний і навпаки.
+    */
+
+
+    /*   WRITE YOUR FURTHER CODE HERE  */
 
 
 
-#pragma endregion 
 
+
+
+
+
+
+
+
+#pragma endregion
+
+#pragma region Deleting Arrays And Vectors
+
+    /* For exercise 1*/
     for (int i = 0; i < row; i++) {
         delete[] pArr1[i];
     }
     delete[] pArr1;
 
+
+    /* For exercise 2*/
+    pArr2.clear();
+
+
+#pragma endregion
+
+
     return 0;
 }
+
+
+
+
 
 #pragma region Functions
 
@@ -141,7 +216,7 @@ void exercise(int numberOfExercise)
     cout << endl << endl << "\t\t\t\t\033[032mExercise " << numberOfExercise << "\033[0m" << endl << endl;
 }
 
-void fullArray(int rows, int columns, int** arr)
+void fullArray(int& rows, int& columns, int** arr)
 {
     for (int i = 0; i < rows; i++)
     {
@@ -154,7 +229,16 @@ void fullArray(int rows, int columns, int** arr)
     }
 }
 
-void outputArray(int rows, int columns, int** arr)
+void fullVector(int& rows, int& columns, vector<vector<int>>& arr)
+{
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            arr[i][j] = LOW_EDGE_FOR_GENERATION + rand() % HIGH_EDGE_FOR_GENERATION;
+        }
+    }
+}
+
+void outputArray(int& rows, int& columns, int** arr)
 {
     for (int i = 0; i < rows; i++)
     {
@@ -167,7 +251,20 @@ void outputArray(int rows, int columns, int** arr)
     }
 }
 
-void outputArrayWithColor(int rows, int columns, int coloredRowNumber, int** arr)
+void outputVector(int& rows, int& columns, vector<vector<int>>& arr)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            cout << setw(4) << arr[i][j];
+
+        }
+        cout << endl;
+    }
+}
+
+void outputArrayWithColor(int& rows, int& columns, int coloredRowNumber, int** arr)
 {
     for (int i = 0; i < rows; i++) // Ітерація по РЯДКАХ
     {
@@ -186,7 +283,7 @@ void outputArrayWithColor(int rows, int columns, int coloredRowNumber, int** arr
     }
 }
 
-void newOutput(int rows, int columns, int** arr)
+void newOutput(int& rows, int& columns, int** arr)
 {
     for (int i = 0; i < columns; i++)
     {
@@ -199,7 +296,7 @@ void newOutput(int rows, int columns, int** arr)
     }
 }
 
-int arrayConvertion(int rows, int columns, int** arr)
+int arrayConvertion(int& rows, int& columns, int** arr)
 {
     int count = 0;
 
@@ -218,7 +315,7 @@ int arrayConvertion(int rows, int columns, int** arr)
     return count;
 }
 
-void matrixWithoutAuxiliaryArray(int rows, int columns, int** arr)
+void matrixWithoutAuxiliaryArray(int& rows, int& columns, int** arr)
 {
     for (int i = 0; i < rows; i++)
     {
@@ -265,7 +362,7 @@ void addNewRow(int& rows, int& columns,int& rowNumber, int**& arr)
     arr = newArr;  
 }
 
-int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray)
+int userInputRowAndColumnNumberToDelete(string& someText, int& numberOfRowsInArray)
 {
     int userNum;
 
@@ -285,6 +382,35 @@ int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray)
         if (userNum < 1 || userNum > numberOfRowsInArray)
         {
             cout << endl << "\033[031m Будь ласка введіть число у діапазоні \033[035m від 1 до " << numberOfRowsInArray << ".\033[0m" << endl;
+            continue;
+        }
+
+        break;
+    }
+
+    return userNum;
+}
+
+int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray)
+{
+    int userNum;
+
+    while (true)
+    {
+        cout << endl << "\033[033m" << someText << "\033[0m";
+        cin >> userNum;
+
+        if (cin.fail())
+        {
+            cout << endl << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userNum < 1 || userNum > numberOfRowsInArray + 1)
+        {
+            cout << endl << "\033[031m Будь ласка введіть число у діапазоні \033[035m від 1 до " << numberOfRowsInArray + 1<< ".\033[0m" << endl;
             continue;
         }
 
@@ -321,6 +447,30 @@ int userInputNumber(string& someText)
     }
 
     return userNum;
+}
+
+void deleteRowInVector(int& rows, int& columns, int& rowToDelete, vector<vector<int>>& arr)
+{
+
+    rows--;
+    vector<vector<int>> newVector(rows, vector<int>(columns));
+
+    int newRow = 0;
+    for (int row = 0; row < rows + 1; row++) {
+        if (row == rowToDelete-1) {
+            continue;
+        }
+
+        for (int col = 0; col < columns; col++) {
+            newVector[newRow][col] = arr[row][col];
+        }
+        newRow++;
+    }
+
+   
+    arr.clear();
+
+    arr = newVector;
 }
 
 #pragma endregion
