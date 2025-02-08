@@ -4,11 +4,25 @@
 #include <iomanip>
 #include <utility>
 #include <vector>
+#include <limits>
+
+//#include <boost/pfr.hpp>
 
 enum MyConstants {
     LOW_EDGE_FOR_GENERATION = -10,
     HIGH_EDGE_FOR_GENERATION = 10,
+    LIMIT_OF_CONUCTS = 100
 };
+
+
+// Struct for execise 4
+//typedef struct 
+//{
+//    string number;
+//    string name;
+//
+//} ContuctNumber;
+
 
 using namespace std;
 
@@ -23,8 +37,6 @@ void fullVector(int& rows, int& columns, vector<vector<int>>& arr);
 void outputArray(int& rows, int& columns, int** arr);
 
 void outputVector(int& rows, int& columns, vector<vector<int>>& arr);
-
-int arrayConvertion(int& rows, int& columns, int** arr);
 
 void newOutput(int& rows, int& columns, int** arr);
 
@@ -46,6 +58,16 @@ void twoDimensialToOneDimensial(int& rows, int& columns, vector<vector<int>>& ar
 
 void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& arr);
 
+void outputDataOfStructure(int& numberOfExistedContucts, string** data);
+
+void searchByContactName(int& numberOfExistedContucts, string& request, string** data);
+
+string userInputData(string& someText);
+
+void searchByNumber(int& numberOfExistedContucts, string& request, string** data);
+
+string userInputContactNumber(string& someText);
+
 #pragma endregion
 
 /*
@@ -53,14 +75,6 @@ void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& ar
     ================
     РОБОТА з РЯДКАМИ
     ================
-
-
-№4
-    Створіть динамічний масив, що зберігає в першому рядку ім'я, а в другому — телефон.
-    Організуйте пошук за ім'ям і за номером телефону та можливість введення і зміни даних.
-
-
-
 
 Навчальний матеріал можете знайти за посиланням
     https://materials.itstep.org/content/f1811e94-507b-44c2-bfbe-ac7ac02a7178/uk
@@ -222,7 +236,7 @@ int main()
 
 
         case 1:
-            // TO DO  1 - 2
+            // TO DO  1 -> 2
             if (row3 != 1)
             {
                 cout << endl << "\033[041mПОПЕРЕДЖЕННЯ:\033[0m  масив і так двовимірний! \n\t       Операція перетворення одновимірного масиву в двовимірній зайва." << endl;
@@ -234,7 +248,7 @@ int main()
             break;
 
         case 2:
-            // TO DO 2 - 1
+            // TO DO 2 -> 1
             if (row3 == 1)
             {
                 cout << endl << "\033[041mПОПЕРЕДЖЕННЯ:\033[0m  масив і так одновимірний! \n\t       Операція перетворення двовимірного масиву в одновимірній зайва." << endl;
@@ -250,24 +264,56 @@ int main()
         }
 
     }
-
-
-    /*int userNumForDelRow3;
-
-    string textForNumberOfRowsExOne3 = "Введіть номер рядка для видалення: ";
-    userNumForDelRow3 = userInputRowAndColumnNumberToDelete(textForNumberOfRowsExOne3, row3);
-
-    deleteRowInVector(row3, col3, userNumForDelRow3, pArr3);
-
-    cout << endl << "\033[032mРезультат з видаленим \033[035m" << userNumForDelRow3 << "\033[032m рядком.\033[0m" << endl;
-    outputVector(row3, col3, pArr3);*/
-
     cout << endl;
 
+#pragma endregion
+
+#pragma region Exercise 4
+
+    /*
+    №4
+    Створіть динамічний масив, що зберігає в першому рядку ім'я, а в другому — телефон.
+    Організуйте пошук за ім'ям і за номером телефону та можливість введення і зміни даних.
+    */
+
+    exercise(4);
+
+    int row4 = LIMIT_OF_CONUCTS;
+    int col4 = 2;
+    int currentFreePosition = 0;
 
 
+    string** contactListArray = new string * [row4];
+    for (int i = 0; i < row4; ++i) {
+        contactListArray[i] = new string[col4];
+    }
+
+    // Ініціалізуємо масив
+    contactListArray[currentFreePosition][0] = "12345";
+    contactListArray[currentFreePosition][1] = "John Doe";
+    currentFreePosition++;
+
+    contactListArray[currentFreePosition][0] = "67890";
+    contactListArray[currentFreePosition][1] = "Jane Smith";
+    currentFreePosition++;
+
+    contactListArray[currentFreePosition][0] = "54321";
+    contactListArray[currentFreePosition][1] = "Emily Johnson";
+    currentFreePosition++;
+
+    outputDataOfStructure(currentFreePosition, contactListArray);
 
 
+    string textForRequest = "Введіть ім'я контакту: ";
+    string request = userInputData(textForRequest);
+
+    searchByContactName(currentFreePosition, request, contactListArray);
+
+    string textForContactNumber = "Введіть ім'я контакту: ";
+    string requestNumber = userInputContactNumber(textForContactNumber);
+
+
+    searchByNumber(currentFreePosition, requestNumber, contactListArray);
 
 
 
@@ -291,6 +337,12 @@ int main()
     /* For exercise 3*/
     pArr3.clear();
 
+
+    /* For exercise 4*/
+    for (int i = 0; i < row4; i++) {
+        delete[] contactListArray[i];
+    }
+    delete[] contactListArray;
 
 #pragma endregion
 
@@ -384,37 +436,6 @@ void newOutput(int& rows, int& columns, int** arr)
         for (int j = 0; j < rows; j++)
         {
             cout << setw(4) << arr[j][i];
-
-        }
-        cout << endl;
-    }
-}
-
-int arrayConvertion(int& rows, int& columns, int** arr)
-{
-    int count = 0;
-
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            if (arr[i][j] == 0)
-            {
-                count++;
-                break;
-            }
-        }
-    }
-
-    return count;
-}
-
-void matrixWithoutAuxiliaryArray(int& rows, int& columns, int** arr)
-{
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
 
         }
         cout << endl;
@@ -625,10 +646,27 @@ void twoDimensialToOneDimensial(int& rows, int& columns, vector<vector<int>>& ar
 void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& arr)
 {
     string textForNewCols = "Введіть нову кількість рядків для нового масиву(кількість колонок буде визначення автоматино): ";
-    int newRows = userInputNumber(textForNewCols);
 
     int totalElements = arr[0].size();
 
+
+    int newRows;
+    while (true)
+    {
+        newRows = userInputNumber(textForNewCols);
+        if (newRows > totalElements)
+        {
+            cout << endl << "\t\033[041mУВАГА!\033[0m\033[031m   Ви ввели кількість рядків, яка перебільшує кількість символів у масиву. Спробуйте знову.\033[0m" << endl;
+            continue;
+        }
+        if (totalElements % newRows != 0)
+        {
+            cout << endl << "\t\033[041mУВАГА!\033[0m\033[031m   Ви ввели кількість рядків, не ділиться націло на кількість елементів масиву. Спробуйте знову.\033[0m" << endl;
+            continue;
+        }
+
+        break;
+    }
     int newColumns = totalElements / newRows;
 
     vector<vector<int>> newArr(newRows, vector<int>(newColumns));
@@ -640,6 +678,176 @@ void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& ar
     arr = newArr;
     rows = newRows;
     columns = newColumns;
+}
+
+void outputDataOfStructure(int& numberOfExistedContucts, string** data)
+{
+    for (size_t i = 0; i < numberOfExistedContucts; i++)
+    {
+        
+            cout << "\033[033mContact number:\033[035m " << data[i][0] << "\033[0m" << endl;
+            cout << "\033[033mContact name:\033[035m " << data[i][1] << "\033[0m" << endl;
+            cout << endl;
+            cout << "-----------------------------------" << endl;
+            cout << endl;
+    }
+}
+
+void toLowerCase(string& str) {
+    for (char& c : str) {
+        c = tolower(c);
+    }
+}
+
+void searchByContactName(int& numberOfExistedContucts, string& request, string** data)
+{
+    string* contuctNames = new string[numberOfExistedContucts];
+
+    for (int i = 0; i < numberOfExistedContucts; i++)
+    {
+        contuctNames[i] = data[i][1];
+    }
+
+    toLowerCase(request);
+    //cout << request << endl;
+
+    bool hasFound = false;
+    string foundName;
+    int showResultCount = 0;
+    for (int i = 0; i < numberOfExistedContucts; i++)
+    {
+        string lowerContuctName = contuctNames[i];
+        toLowerCase(lowerContuctName);
+        /*cout << lowerContuctName << endl;*/
+
+        if (request == lowerContuctName)
+        {
+            hasFound = true;
+            foundName = contuctNames[i];
+            break;
+        }
+        showResultCount++;
+    }
+
+    if (hasFound)
+    {
+        cout << "\033[032mContact has successfully been found: \033[0m" << endl << endl;
+        cout << "\t\033[033mContact number:\033[035m " << data[showResultCount][0] << "\033[0m" << endl;
+        cout << "\t\033[033mContact name:\033[035m " << data[showResultCount][1] << "\033[0m" << endl;
+        cout << endl;
+        cout << "\t-----------------------------------" << endl;
+        cout << endl;
+    }
+  
+    else
+        cout << "\033[031mContuct hasn't been found! \033[0m" << endl;
+
+    delete[] contuctNames; 
+}
+
+void searchByNumber(int& numberOfExistedContucts, string& request, string** data)
+{
+    string* Number = new string[numberOfExistedContucts];
+
+    for (int i = 0; i < numberOfExistedContucts; i++)
+    {
+        Number[i] = data[i][0];
+    }
+
+    /*cout << request << endl;*/
+
+    bool hasFound = false;
+    string foundName;
+    int showResultCount = 0;
+    for (int i = 0; i < numberOfExistedContucts; i++)
+    {
+        string ContuctNumber = Number[i];
+        /*cout << ContuctNumber << endl;*/
+
+        if (request == ContuctNumber)
+        {
+            hasFound = true;
+            foundName = Number[i];
+            break;
+        }
+        showResultCount++;
+    }
+
+    if (hasFound)
+    {
+        cout << "\033[032mNumber has successfully been found: \033[0m" << endl << endl;
+        cout << "\t\033[033mContact number:\033[035m " << data[showResultCount][0] << "\033[0m" << endl;
+        cout << "\t\033[033mContact name:\033[035m " << data[showResultCount][1] << "\033[0m" << endl;
+        cout << endl;
+        cout << "\t-----------------------------------" << endl;
+        cout << endl;
+    }
+
+    else
+        cout << "\033[031mContuct hasn't been found! \033[0m" << endl;
+
+    delete[] Number;
+}
+
+// HERE
+string userInputData(string& someText)
+{
+    string userStr;
+
+    while (true)
+    {
+        cout << endl << "\033[033m" << someText << "\033[0m";
+        //HERE cin.ignore();  OR   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, userStr);
+
+        if (cin.fail())
+        {
+            cout << endl << "\033[031m Помилка! Будь ласка, введіть ім'я контакта.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userStr.empty())
+        {
+            cout << endl << "\033[031m Будь ласка введіть текст.\033[0m" << endl;
+            continue;
+        }
+
+        break;
+    }
+
+    return userStr;
+}
+
+string userInputContactNumber(string& someText)
+{
+    string userStr;
+
+    while (true)
+    {
+        cout << endl << "\033[033m" << someText << "\033[0m";
+        //HERE cin.ignore();  OR   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, userStr);
+
+        if (cin.fail())
+        {
+            cout << endl << "\033[031m Помилка! Будь ласка, введіть номер контакта.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userStr.empty())
+        {
+            cout << endl << "\033[031m Будь ласка введіть текст.\033[0m" << endl;
+            continue;
+        }
+
+        break;
+    }
+
+    return userStr;
 }
 
 
