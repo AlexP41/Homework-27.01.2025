@@ -40,6 +40,11 @@ void deleteRowInVector(int& rows, int& columns, int& rowToDelete, vector<vector<
 
 int userInputRowAndColumnNumberToDelete(string& someText, int& numberOfRowsInArray);
 
+int userChoiceForExerciseThree();
+
+void twoDimensialToOneDimensial(int& rows, int& columns, vector<vector<int>>& arr);
+
+void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& arr);
 
 #pragma endregion
 
@@ -49,9 +54,6 @@ int userInputRowAndColumnNumberToDelete(string& someText, int& numberOfRowsInArr
     –ќЅќ“ј з –яƒ јћ»
     ================
 
-
-є3
-    Ќапиш≥ть функц≥ю дл€ перетворенн€ одновим≥рного масиву в 2-вим≥рний ≥ навпаки.
 
 є4
     —твор≥ть динам≥чний масив, що збер≥гаЇ в першому р€дку ≥м'€, а в другому Ч телефон.
@@ -173,6 +175,94 @@ int main()
 
     /*   WRITE YOUR FURTHER CODE HERE  */
 
+    int row3, col3;
+
+    string textForNumberOfRows3 = "Input rows: ";
+    row3 = userInputNumber(textForNumberOfRows3);
+
+    cout << endl;
+
+    string textForNumberOfColumns3 = "Input columns: ";
+    col3 = userInputNumber(textForNumberOfColumns3);
+
+
+    vector<vector<int>> pArr3(row3, vector<int>(col3));
+
+    fullVector(row3, col3, pArr3);
+
+    cout << endl;
+
+    cout << "\033[033m¬иведенн€ масиву: \033[0m" << endl;
+
+    outputVector(row3, col3, pArr3);
+
+    cout << endl;
+
+
+
+
+    bool isContinue = true;
+    while (isContinue)
+    {
+        int userChoice = userChoiceForExerciseThree();
+
+        /*
+        void twoDimensialToOneDimensial(int& rows, int& columns, vector<vector<int>>& arr);
+
+        void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& arr);
+        */
+
+
+        switch (userChoice)
+        {
+        case 0:
+            isContinue = false;
+            cout << endl << "\033[042m”¬ј√ј:\033[0m \033[032m ¬и усп≥шно вийшли з меню завданн€ 3 !\033[0m" << endl;
+            break;
+
+
+        case 1:
+            // TO DO  1 - 2
+            if (row3 != 1)
+            {
+                cout << endl << "\033[041mѕќѕ≈–≈ƒ∆≈ЌЌя:\033[0m  масив ≥ так двовим≥рний! \n\t       ќперац≥€ перетворенн€ одновим≥рного масиву в двовим≥рн≥й зайва." << endl;
+                break;
+            }
+            oneDimensialToTwoDimensial(row3, col3, pArr3);
+            outputVector(row3, col3, pArr3);
+
+            break;
+
+        case 2:
+            // TO DO 2 - 1
+            if (row3 == 1)
+            {
+                cout << endl << "\033[041mѕќѕ≈–≈ƒ∆≈ЌЌя:\033[0m  масив ≥ так одновим≥рний! \n\t       ќперац≥€ перетворенн€ двовим≥рного масиву в одновим≥рн≥й зайва." << endl;
+                break;
+            }
+            twoDimensialToOneDimensial(row3, col3, pArr3);
+            outputVector(row3, col3, pArr3);
+
+            break;
+
+        default:
+            break;
+        }
+
+    }
+
+
+    /*int userNumForDelRow3;
+
+    string textForNumberOfRowsExOne3 = "¬вед≥ть номер р€дка дл€ видаленн€: ";
+    userNumForDelRow3 = userInputRowAndColumnNumberToDelete(textForNumberOfRowsExOne3, row3);
+
+    deleteRowInVector(row3, col3, userNumForDelRow3, pArr3);
+
+    cout << endl << "\033[032m–езультат з видаленим \033[035m" << userNumForDelRow3 << "\033[032m р€дком.\033[0m" << endl;
+    outputVector(row3, col3, pArr3);*/
+
+    cout << endl;
 
 
 
@@ -196,6 +286,10 @@ int main()
 
     /* For exercise 2*/
     pArr2.clear();
+
+
+    /* For exercise 3*/
+    pArr3.clear();
 
 
 #pragma endregion
@@ -472,5 +566,81 @@ void deleteRowInVector(int& rows, int& columns, int& rowToDelete, vector<vector<
 
     arr = newVector;
 }
+
+int userChoiceForExerciseThree()
+{
+    int userChoice;
+
+    while (true) {
+        cout << endl;
+        cout << "\t\t\t\t\033[42mMENU\033[0m" << endl;
+        cout << "\t\t\033[032m[1]\033[0m - ќдновим≥рний у двовим≥рний" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - ƒвовим≥рний у одновим≥рний" << endl;
+        cout << "\t\t\033[031m[0]\033[0m - вийти з меню" << endl;
+        cout << "\033[033m¬вед≥ть ц≥ле число\033[0m" << endl;
+        cout << "\033[033m¬вед≥ть ваш виб≥р: \033[0m";
+        cin >> userChoice;
+
+     
+        if (cin.fail()) {
+            cout << "\033[031m ѕомилка! Ѕудь ласка, введ≥ть число.\033[0m\n";
+            cin.clear(); 
+            cin.ignore(1000, '\n'); 
+            continue;
+        }
+
+        if (userChoice != 1 && userChoice != 2 && userChoice != 0)
+        {
+            cout << "\033[031m ѕомилка! Ѕудь ласка, введ≥ть 1 або 2.\033[0m\n";
+            continue;
+        }
+       
+       break;
+        
+    }
+
+    return userChoice;
+}
+
+void twoDimensialToOneDimensial(int& rows, int& columns, vector<vector<int>>& arr)
+{
+    vector<int>oneDimArray;
+    oneDimArray.reserve(rows * columns);
+
+    for (size_t i = 0; i < rows; i++)
+    {
+        for (size_t j = 0; j < columns; j++)
+        {
+            oneDimArray.push_back(arr[i][j]);
+        }
+    }
+
+    arr.clear();
+    arr.push_back(oneDimArray);
+
+    rows = 1;
+    columns = oneDimArray.size();
+}
+
+void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& arr)
+{
+    string textForNewCols = "¬вед≥ть нову к≥льк≥сть р€дк≥в дл€ нового масиву(к≥льк≥сть колонок буде визначенн€ автоматино): ";
+    int newRows = userInputNumber(textForNewCols);
+
+    int totalElements = arr[0].size();
+
+    int newColumns = totalElements / newRows;
+
+    vector<vector<int>> newArr(newRows, vector<int>(newColumns));
+
+    for (int i = 0; i < totalElements; i++) {
+        newArr[i / newColumns][i % newColumns] = arr[0][i]; 
+    }
+
+    arr = newArr;
+    rows = newRows;
+    columns = newColumns;
+}
+
 
 #pragma endregion
