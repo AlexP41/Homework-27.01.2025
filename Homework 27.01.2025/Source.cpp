@@ -9,9 +9,12 @@
 //#include <boost/pfr.hpp>
 
 enum MyConstants {
+    // FOR EXERCISE 1 , 2 , 3
     LOW_EDGE_FOR_GENERATION = -10,
     HIGH_EDGE_FOR_GENERATION = 10,
-    LIMIT_OF_CONUCTS = 100
+
+    // FOR EXERCISE 4
+    LIMIT_OF_CONUCTS = 4
 };
 
 
@@ -67,6 +70,16 @@ string userInputData(string& someText);
 void searchByNumber(int& numberOfExistedContucts, string& request, string** data);
 
 string userInputContactNumber(string& someText);
+
+void addNewContact(int& numberOfExistedContucts, string**& data);
+
+void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data);
+
+void changeData(int& numberOfExistedContucts, string**& data);
+
+void clearScreen();
+
+int userChoiceForExerciseFourPhoneBook();
 
 #pragma endregion
 
@@ -301,24 +314,72 @@ int main()
     contactListArray[currentFreePosition][1] = "Emily Johnson";
     currentFreePosition++;
 
-    outputDataOfStructure(currentFreePosition, contactListArray);
+    bool isWork = true;
+        while (isWork)
+        {
+            int userChoiceForManipulationWithPhoneBook = userChoiceForExerciseFourPhoneBook();
+
+            string textForRequest = "Введіть ім'я контакту: ";
+            string request;
+
+            string textForContactNumber = "Введіть номер контакту: ";
+            string requestNumber;
+
+            switch (userChoiceForManipulationWithPhoneBook)
+            {
+            case 0:
+                isWork = false;
+                cout << endl << "\033[042mУВАГА:\033[0m \033[032m Ви успішно вийшли з меню завдання 4 - телефонної книги !\033[0m" << endl;
+                break;
+    
+    
+            case 1:
+                outputDataOfStructure(currentFreePosition, contactListArray);
+                break;
+    
+            case 2:
+                cout << endl << endl << "\t\033[045m Пошук контакту за ім'ям \033[0m" << endl;
+                request = userInputData(textForRequest);
+                searchByContactName(currentFreePosition, request, contactListArray);
+    
+                break;
+                  
+            case 3:
+                cout << endl << endl << "\t\033[045m Пошук контакту за номером телефону \033[0m" << endl;
+                requestNumber = userInputContactNumber(textForContactNumber);
+                searchByNumber(currentFreePosition, requestNumber, contactListArray);
+
+                break;
+
+            case 4:
+                addNewContact(currentFreePosition, contactListArray);
+
+                break;
+
+            case 5:
+                deleteDataInPhoneBook(currentFreePosition, contactListArray);
 
 
-    string textForRequest = "Введіть ім'я контакту: ";
-    string request = userInputData(textForRequest);
+                break;
 
-    searchByContactName(currentFreePosition, request, contactListArray);
+            case 6:
+                changeData(currentFreePosition, contactListArray);
 
-    string textForContactNumber = "Введіть ім'я контакту: ";
-    string requestNumber = userInputContactNumber(textForContactNumber);
+                break;
+
+            case 7:
+                clearScreen();
+                break;
+
+            default:
+                break;
+            }
+    
+        }
+        cout << endl;
 
 
-    searchByNumber(currentFreePosition, requestNumber, contactListArray);
-
-
-
-
-
+  
 #pragma endregion
 
 #pragma region Deleting Arrays And Vectors
@@ -680,8 +741,13 @@ void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& ar
     columns = newColumns;
 }
 
+
+// For Exercise 4
+
 void outputDataOfStructure(int& numberOfExistedContucts, string** data)
 {
+    cout << endl << endl << "\t\033[045m Виведення інформації телефонної книги: \033[0m" << endl << endl;
+
     for (size_t i = 0; i < numberOfExistedContucts; i++)
     {
         
@@ -701,6 +767,7 @@ void toLowerCase(string& str) {
 
 void searchByContactName(int& numberOfExistedContucts, string& request, string** data)
 {
+
     string* contuctNames = new string[numberOfExistedContucts];
 
     for (int i = 0; i < numberOfExistedContucts; i++)
@@ -740,7 +807,7 @@ void searchByContactName(int& numberOfExistedContucts, string& request, string**
     }
   
     else
-        cout << "\033[031mContuct hasn't been found! \033[0m" << endl;
+        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
 
     delete[] contuctNames; 
 }
@@ -784,7 +851,7 @@ void searchByNumber(int& numberOfExistedContucts, string& request, string** data
     }
 
     else
-        cout << "\033[031mContuct hasn't been found! \033[0m" << endl;
+        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
 
     delete[] Number;
 }
@@ -850,5 +917,305 @@ string userInputContactNumber(string& someText)
     return userStr;
 }
 
+void checkResult(int& numberOfExistedContucts, string**& data)
+{
+    int userChoice1;
+
+    while (true) {
+        cout << endl;
+        cout << "\t\t\t\t\033[42mБажаєете переглянути?\033[0m" << endl;
+        cout << "\t\t\033[032m[1]\033[0m - Так" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - Ні" << endl;
+        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cin >> userChoice1;
+
+
+        if (cin.fail()) {
+            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userChoice1 != 1 && userChoice1 != 2)
+        {
+            cout << "\033[031m Помилка! Будь ласка, введіть 1 або 2.\033[0m\n";
+            continue;
+        }
+
+        break;
+
+    }
+
+    cout << endl;
+    switch (userChoice1)
+    {
+    case 1:
+        outputDataOfStructure(numberOfExistedContucts, data);
+
+    case 2:
+        break;
+
+    default:
+        break;
+    }
+    cout << endl;
+}
+
+void addNewContact(int& numberOfExistedContucts, string**& data)
+{
+    cout << endl << endl << "\t\033[042m Додавання нового контакту \033[0m" << endl;
+
+    if (numberOfExistedContucts >= LIMIT_OF_CONUCTS)
+    {
+        cout << endl << "\033[041mУВАГА!\033[0m  \033[031mКількість контактів у телефонній книзі перевищує ліміт - " << LIMIT_OF_CONUCTS << "\033[0m" << endl << endl;
+        return;
+    }
+
+    string textForRequest = "Введіть ім'я контакту: ";
+    string requestName = userInputData(textForRequest);
+
+    string textForContactNumber = "Введіть номер контакту: ";
+    string requestNumber = userInputContactNumber(textForContactNumber);
+
+    data[numberOfExistedContucts][0] = requestNumber;
+    data[numberOfExistedContucts][1] = requestName;
+
+    numberOfExistedContucts++;
+
+    cout << endl << "\033[42m Контакт був успішно збережений.\033[0m" << endl;
+   
+    checkResult(numberOfExistedContucts, data);
+}
+
+void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data)
+{
+    cout << endl << "\t\033[041m ВИДАЛЕННЯ КОНТАКТУ \033[0m" << endl << endl;
+
+    cout << "\033[033mПошук контакту для видалення\033[0m" << endl;
+
+    int userChoice;
+    while (true) {
+        cout << endl;
+        cout << "\t\t\033[032m[1]\033[0m - за іменем контакту" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - за номером контакту" << endl;
+        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cin >> userChoice;
+
+        if (cin.fail()) {
+            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userChoice != 1 && userChoice != 2) {
+            cout << "\033[031m Помилка! Будь ласка, введіть 1 або 2.\033[0m\n";
+            continue;
+        }
+
+        break;
+    }
+
+    int indexToDelete = -1;
+    switch (userChoice)
+    {
+    case 1: {
+        string request;
+        cout << "Введіть ім'я контакту: ";
+        cin.ignore();
+        getline(cin, request);
+
+        toLowerCase(request);
+
+        for (int i = 0; i < numberOfExistedContucts; i++) {
+            string contactName = data[i][1];
+            toLowerCase(contactName);
+            if (contactName == request) {
+                indexToDelete = i;
+                break;
+            }
+        }
+        break;
+    }
+
+    case 2: {
+        string request;
+        cout << "Введіть номер контакту: ";
+        cin.ignore();
+        getline(cin, request);
+
+        for (int i = 0; i < numberOfExistedContucts; i++) {
+            if (data[i][0] == request) {
+                indexToDelete = i;
+                break;
+            }
+        }
+        break;
+    }
+    }
+
+    if (indexToDelete == -1) {
+        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
+        return;
+    }
+
+    for (int i = indexToDelete; i < numberOfExistedContucts - 1; i++) {
+        data[i][0] = data[i + 1][0];
+        data[i][1] = data[i + 1][1];
+    }
+
+    data[numberOfExistedContucts - 1][0] = "";
+    data[numberOfExistedContucts - 1][1] = "";
+
+    cout << endl << "\033[41m Контакт був успішно видалений. \033[0m" << endl << endl;
+
+    numberOfExistedContucts--;
+
+    // CHECKING
+
+    checkResult(numberOfExistedContucts, data);
+}
+
+void changeData(int& numberOfExistedContucts, string**& data)
+{
+    cout << endl << "\t\033[044m ВНЕСЕННЯ ЗМІН \033[0m" << endl << endl;
+
+    cout << "\033[033mПошук контакту для внесення змін\033[0m" << endl;
+
+    int userChoice;
+    while (true) {
+        cout << endl;
+        cout << "\t\t\033[032m[1]\033[0m - за іменем контакту" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - за номером контакту" << endl;
+        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cin >> userChoice;
+
+        if (cin.fail()) {
+            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userChoice != 1 && userChoice != 2) {
+            cout << "\033[031m Помилка! Будь ласка, введіть 1 або 2.\033[0m\n";
+            continue;
+        }
+
+        break;
+    }
+
+    int indexToModify = -1;
+    cout << endl;
+    switch (userChoice)
+    {
+    case 1: {
+        string request;
+        cout << "Введіть ім'я контакту: ";
+        cin.ignore();
+        getline(cin, request);
+
+        toLowerCase(request);
+
+     
+        for (int i = 0; i < numberOfExistedContucts; i++) {
+            string contactName = data[i][1];
+            toLowerCase(contactName);
+            if (contactName == request) {
+                indexToModify = i;
+                break;
+            }
+        }
+        break;
+    }
+
+    case 2: {
+        string request;
+        cout << "Введіть номер контакту: ";
+        cin.ignore();
+        getline(cin, request);
+
+        for (int i = 0; i < numberOfExistedContucts; i++) {
+            if (data[i][0] == request) {
+                indexToModify = i;
+                break;
+            }
+        }
+        break;
+    }
+    }
+
+    if (indexToModify == -1) {
+        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
+        return;
+    }
+    cout << endl;
+    cout << "\033[032mContact has successfully been found: \033[0m" << endl << endl;
+    cout << "\t\033[033mContact number:\033[035m " << data[indexToModify][0] << "\033[0m" << endl;
+    cout << "\t\033[033mContact name:\033[035m " << data[indexToModify][1] << "\033[0m" << endl;
+    cout << endl;
+    cout << "\t-----------------------------------" << endl;
+    cout << endl;
+
+    string textForRequest = "\033[0mВведіть \033[032mнове\033[0m ім'я контакту: ";
+    string requestFORNAME = userInputData(textForRequest);
+
+    string textForContactNumber = "\033[0mВведіть \033[032mновий\033[0m номер контакту: ";
+    string requestFORNUMBER = userInputContactNumber(textForContactNumber);
+
+    data[indexToModify][0] = requestFORNUMBER;
+    data[indexToModify][1] = requestFORNAME;
+
+    cout << endl << "\033[42m Контакт був успішно змінений. \033[0m" << endl << endl;
+
+    // CHECKING
+    checkResult(numberOfExistedContucts, data);
+}
+
+void clearScreen() {
+    cout << "\033[2J\033[H";  // Очищає екран і переміщує курсор у верхній лівий кут
+}
+
+int userChoiceForExerciseFourPhoneBook()
+{
+    int userChoice;
+    cout << endl;
+    cout << "\t\t\t\t\033[44m MENU  Робота з телефонною книгою \033[0m" << endl;
+    cout << "\t\t\033[032m[1]\033[0m - виведення даних телефонної книги" << endl;
+    cout << "\t\t\033[032m[2]\033[0m - пошук контакту за ім'ям" << endl;
+    cout << "\t\t\033[032m[3]\033[0m - пошук контакту за номером" << endl;
+    cout << "\t\t\033[032m[4]\033[0m - додати новий контакт" << endl;
+    cout << "\t\t\033[032m[5]\033[0m - видалити контакт" << endl;
+    cout << "\t\t\033[032m[6]\033[0m - зміна даних" << endl;
+    cout << endl;
+    cout << "\t\t\033[032m[7]\033[0m - очищення екрану" << endl;
+    cout << "\t\t\033[031m[0]\033[0m - вийти з меню" << endl;
+    cout << endl;
+
+    while (true) {
+        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cin >> userChoice;
+
+
+        if (cin.fail()) {
+            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (userChoice != 1 && userChoice != 2 && userChoice != 3 && userChoice != 4 && userChoice != 5 && userChoice != 6 && userChoice != 7 && userChoice != 0)
+        {
+            cout << "\033[031m Помилка! Будь ласка, введіть ціле значення у діапазоні від 0 до 7(включно).\033[0m\n";
+            continue;
+        }
+
+        break;
+
+    }
+
+    return userChoice;
+}
 
 #pragma endregion
