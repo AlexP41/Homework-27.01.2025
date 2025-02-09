@@ -86,13 +86,13 @@ int userChoiceForExerciseFourPhoneBook();
 /*
 
     ================
-    РОБОТА з РЯДКАМИ
+    Р РћР‘РћРўРђ Р· Р РЇР”РљРђРњР
     ================
 
-Навчальний матеріал можете знайти за посиланням
+РќР°РІС‡Р°Р»СЊРЅРёР№ РјР°С‚РµСЂС–Р°Р» РјРѕР¶РµС‚Рµ Р·РЅР°Р№С‚Рё Р·Р° РїРѕСЃРёР»Р°РЅРЅСЏРј
     https://materials.itstep.org/content/f1811e94-507b-44c2-bfbe-ac7ac02a7178/uk
 
-Результат роботи: посилання на GitHub
+Р РµР·СѓР»СЊС‚Р°С‚ СЂРѕР±РѕС‚Рё: РїРѕСЃРёР»Р°РЅРЅСЏ РЅР° GitHub
 */
 
 
@@ -105,8 +105,8 @@ int main()
 
 #pragma region Exercise 1
     /*
-    №1
-    Написати функцію, що додає рядок двовимірному масиву в зазначену позицію. (new/delete)
+    в„–1
+    РќР°РїРёСЃР°С‚Рё С„СѓРЅРєС†С–СЋ, С‰Рѕ РґРѕРґР°С” СЂСЏРґРѕРє РґРІРѕРІРёРјС–СЂРЅРѕРјСѓ РјР°СЃРёРІСѓ РІ Р·Р°Р·РЅР°С‡РµРЅСѓ РїРѕР·РёС†С–СЋ. (new/delete)
     */
 
     exercise(1);
@@ -128,18 +128,18 @@ int main()
 
     cout << endl;
 
-    cout << "\033[033mВиведення масиву: \033[0m" << endl;
+    cout << "\033[033mР’РёРІРµРґРµРЅРЅСЏ РјР°СЃРёРІСѓ: \033[0m" << endl;
 
     outputArray(row, col, pArr1);
 
     int userNumForNewRow;
 
-    string textForNumberOfRowsExOne = "Введіть номер нового рядка: ";
+    string textForNumberOfRowsExOne = "Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РЅРѕРІРѕРіРѕ СЂСЏРґРєР°: ";
     userNumForNewRow = userInputRowAndColumnNumber(textForNumberOfRowsExOne, row);
 
     addNewRow(row, col, userNumForNewRow, pArr1);
 
-    cout << endl << "\033[032mРезультат з доданим новим \033[035m" << userNumForNewRow << "\033[032m рядком.\033[0m" << endl;
+    cout << endl << "\033[032mР РµР·СѓР»СЊС‚Р°С‚ Р· РґРѕРґР°РЅРёРј РЅРѕРІРёРј \033[035m" << userNumForNewRow << "\033[032m СЂСЏРґРєРѕРј.\033[0m" << endl;
     outputArrayWithColor(row, col, userNumForNewRow-1, pArr1);
     
     cout << endl;
@@ -151,8 +151,8 @@ int main()
 #pragma region Exercise 2
 
     /*
-   №2
-    Написати функцію, що видаляє рядок двовимірного масиву за вказаним номером. (vector)
+   в„–2
+    РќР°РїРёСЃР°С‚Рё С„СѓРЅРєС†С–СЋ, С‰Рѕ РІРёРґР°Р»СЏС” СЂСЏРґРѕРє РґРІРѕРІРёРјС–СЂРЅРѕРіРѕ РјР°СЃРёРІСѓ Р·Р° РІРєР°Р·Р°РЅРёРј РЅРѕРјРµСЂРѕРј. (vector)
     */
 
     int row2, col2;
@@ -172,18 +172,18 @@ int main()
 
     cout << endl;
 
-    cout << "\033[033mВиведення масиву: \033[0m" << endl;
+    cout << "\033[033mР’РёРІРµРґРµРЅРЅСЏ РјР°СЃРёРІСѓ: \033[0m" << endl;
 
     outputVector(row2, col2, pArr2);
 
     int userNumForDelRow2;
 
-    string textForNumberOfRowsExOne2 = "Введіть номер рядка для видалення: ";
+    string textForNumberOfRowsExOne2 = "Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ СЂСЏРґРєР° РґР»СЏ РІРёРґР°Р»РµРЅРЅСЏ: ";
     userNumForDelRow2 = userInputRowAndColumnNumberToDelete(textForNumberOfRowsExOne2, row2);
 
     deleteRowInVector(row2, col2, userNumForDelRow2, pArr2);
 
-    cout << endl << "\033[032mРезультат з видаленим \033[035m" << userNumForDelRow2 << "\033[032m рядком.\033[0m" << endl;
+    cout << endl << "\033[032mР РµР·СѓР»СЊС‚Р°С‚ Р· РІРёРґР°Р»РµРЅРёРј \033[035m" << userNumForDelRow2 << "\033[032m СЂСЏРґРєРѕРј.\033[0m" << endl;
     outputVector(row2, col2, pArr2);
 
     cout << endl;
@@ -195,8 +195,8 @@ int main()
 
     exercise(3);
     /*
-    №3
-    Напишіть функцію для перетворення одновимірного масиву в 2-вимірний і навпаки.
+    в„–3
+    РќР°РїРёС€С–С‚СЊ С„СѓРЅРєС†С–СЋ РґР»СЏ РїРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ РѕРґРЅРѕРІРёРјС–СЂРЅРѕРіРѕ РјР°СЃРёРІСѓ РІ 2-РІРёРјС–СЂРЅРёР№ С– РЅР°РІРїР°РєРё.
     */
 
 
@@ -219,7 +219,7 @@ int main()
 
     cout << endl;
 
-    cout << "\033[033mВиведення масиву: \033[0m" << endl;
+    cout << "\033[033mР’РёРІРµРґРµРЅРЅСЏ РјР°СЃРёРІСѓ: \033[0m" << endl;
 
     outputVector(row3, col3, pArr3);
 
@@ -244,7 +244,7 @@ int main()
         {
         case 0:
             isContinue = false;
-            cout << endl << "\033[042mУВАГА:\033[0m \033[032m Ви успішно вийшли з меню завдання 3 !\033[0m" << endl;
+            cout << endl << "\033[042mРЈР’РђР“Рђ:\033[0m \033[032m Р’Рё СѓСЃРїС–С€РЅРѕ РІРёР№С€Р»Рё Р· РјРµРЅСЋ Р·Р°РІРґР°РЅРЅСЏ 3 !\033[0m" << endl;
             break;
 
 
@@ -252,7 +252,7 @@ int main()
             // TO DO  1 -> 2
             if (row3 != 1)
             {
-                cout << endl << "\033[041mПОПЕРЕДЖЕННЯ:\033[0m  масив і так двовимірний! \n\t       Операція перетворення одновимірного масиву в двовимірній зайва." << endl;
+                cout << endl << "\033[041mРџРћРџР•Р Р•Р”Р–Р•РќРќРЇ:\033[0m  РјР°СЃРёРІ С– С‚Р°Рє РґРІРѕРІРёРјС–СЂРЅРёР№! \n\t       РћРїРµСЂР°С†С–СЏ РїРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ РѕРґРЅРѕРІРёРјС–СЂРЅРѕРіРѕ РјР°СЃРёРІСѓ РІ РґРІРѕРІРёРјС–СЂРЅС–Р№ Р·Р°Р№РІР°." << endl;
                 break;
             }
             oneDimensialToTwoDimensial(row3, col3, pArr3);
@@ -264,7 +264,7 @@ int main()
             // TO DO 2 -> 1
             if (row3 == 1)
             {
-                cout << endl << "\033[041mПОПЕРЕДЖЕННЯ:\033[0m  масив і так одновимірний! \n\t       Операція перетворення двовимірного масиву в одновимірній зайва." << endl;
+                cout << endl << "\033[041mРџРћРџР•Р Р•Р”Р–Р•РќРќРЇ:\033[0m  РјР°СЃРёРІ С– С‚Р°Рє РѕРґРЅРѕРІРёРјС–СЂРЅРёР№! \n\t       РћРїРµСЂР°С†С–СЏ РїРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ РґРІРѕРІРёРјС–СЂРЅРѕРіРѕ РјР°СЃРёРІСѓ РІ РѕРґРЅРѕРІРёРјС–СЂРЅС–Р№ Р·Р°Р№РІР°." << endl;
                 break;
             }
             twoDimensialToOneDimensial(row3, col3, pArr3);
@@ -284,9 +284,9 @@ int main()
 #pragma region Exercise 4
 
     /*
-    №4
-    Створіть динамічний масив, що зберігає в першому рядку ім'я, а в другому — телефон.
-    Організуйте пошук за ім'ям і за номером телефону та можливість введення і зміни даних.
+    в„–4
+    РЎС‚РІРѕСЂС–С‚СЊ РґРёРЅР°РјС–С‡РЅРёР№ РјР°СЃРёРІ, С‰Рѕ Р·Р±РµСЂС–РіР°С” РІ РїРµСЂС€РѕРјСѓ СЂСЏРґРєСѓ С–Рј'СЏ, Р° РІ РґСЂСѓРіРѕРјСѓ вЂ” С‚РµР»РµС„РѕРЅ.
+    РћСЂРіР°РЅС–Р·СѓР№С‚Рµ РїРѕС€СѓРє Р·Р° С–Рј'СЏРј С– Р·Р° РЅРѕРјРµСЂРѕРј С‚РµР»РµС„РѕРЅСѓ С‚Р° РјРѕР¶Р»РёРІС–СЃС‚СЊ РІРІРµРґРµРЅРЅСЏ С– Р·РјС–РЅРё РґР°РЅРёС….
     */
 
     exercise(4);
@@ -301,7 +301,7 @@ int main()
         contactListArray[i] = new string[col4];
     }
 
-    // Ініціалізуємо масив
+    // Р†РЅС–С†С–Р°Р»С–Р·СѓС”РјРѕ РјР°СЃРёРІ
     contactListArray[currentFreePosition][0] = "12345";
     contactListArray[currentFreePosition][1] = "John Doe";
     currentFreePosition++;
@@ -319,17 +319,17 @@ int main()
         {
             int userChoiceForManipulationWithPhoneBook = userChoiceForExerciseFourPhoneBook();
 
-            string textForRequest = "Введіть ім'я контакту: ";
+            string textForRequest = "Р’РІРµРґС–С‚СЊ С–Рј'СЏ РєРѕРЅС‚Р°РєС‚Сѓ: ";
             string request;
 
-            string textForContactNumber = "Введіть номер контакту: ";
+            string textForContactNumber = "Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РєРѕРЅС‚Р°РєС‚Сѓ: ";
             string requestNumber;
 
             switch (userChoiceForManipulationWithPhoneBook)
             {
             case 0:
                 isWork = false;
-                cout << endl << "\033[042mУВАГА:\033[0m \033[032m Ви успішно вийшли з меню завдання 4 - телефонної книги !\033[0m" << endl;
+                cout << endl << "\033[042mРЈР’РђР“Рђ:\033[0m \033[032m Р’Рё СѓСЃРїС–С€РЅРѕ РІРёР№С€Р»Рё Р· РјРµРЅСЋ Р·Р°РІРґР°РЅРЅСЏ 4 - С‚РµР»РµС„РѕРЅРЅРѕС— РєРЅРёРіРё !\033[0m" << endl;
                 break;
     
     
@@ -338,14 +338,14 @@ int main()
                 break;
     
             case 2:
-                cout << endl << endl << "\t\033[045m Пошук контакту за ім'ям \033[0m" << endl;
+                cout << endl << endl << "\t\033[045m РџРѕС€СѓРє РєРѕРЅС‚Р°РєС‚Сѓ Р·Р° С–Рј'СЏРј \033[0m" << endl;
                 request = userInputData(textForRequest);
                 searchByContactName(currentFreePosition, request, contactListArray);
     
                 break;
                   
             case 3:
-                cout << endl << endl << "\t\033[045m Пошук контакту за номером телефону \033[0m" << endl;
+                cout << endl << endl << "\t\033[045m РџРѕС€СѓРє РєРѕРЅС‚Р°РєС‚Сѓ Р·Р° РЅРѕРјРµСЂРѕРј С‚РµР»РµС„РѕРЅСѓ \033[0m" << endl;
                 requestNumber = userInputContactNumber(textForContactNumber);
                 searchByNumber(currentFreePosition, requestNumber, contactListArray);
 
@@ -473,17 +473,17 @@ void outputVector(int& rows, int& columns, vector<vector<int>>& arr)
 
 void outputArrayWithColor(int& rows, int& columns, int coloredRowNumber, int** arr)
 {
-    for (int i = 0; i < rows; i++) // Ітерація по РЯДКАХ
+    for (int i = 0; i < rows; i++) // Р†С‚РµСЂР°С†С–СЏ РїРѕ Р РЇР”РљРђРҐ
     {
-        for (int j = 0; j < columns; j++) // Ітерація по СТОВПЦЯХ
+        for (int j = 0; j < columns; j++) // Р†С‚РµСЂР°С†С–СЏ РїРѕ РЎРўРћР’РџР¦РЇРҐ
         {
             if (i == coloredRowNumber)
             {
-                cout << "\033[035m" << setw(4) << arr[i][j] << "\033[0m"; // Фіолетовий колір
+                cout << "\033[035m" << setw(4) << arr[i][j] << "\033[0m"; // Р¤С–РѕР»РµС‚РѕРІРёР№ РєРѕР»С–СЂ
             }
             else
             {
-                cout << setw(4) << arr[i][j]; // Звичайний вивід
+                cout << setw(4) << arr[i][j]; // Р—РІРёС‡Р°Р№РЅРёР№ РІРёРІС–Рґ
             }
         }
         cout << endl;
@@ -549,7 +549,7 @@ int userInputRowAndColumnNumberToDelete(string& someText, int& numberOfRowsInArr
 
         if (cin.fail())
         {
-            cout << endl << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << endl << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -557,7 +557,7 @@ int userInputRowAndColumnNumberToDelete(string& someText, int& numberOfRowsInArr
 
         if (userNum < 1 || userNum > numberOfRowsInArray)
         {
-            cout << endl << "\033[031m Будь ласка введіть число у діапазоні \033[035m від 1 до " << numberOfRowsInArray << ".\033[0m" << endl;
+            cout << endl << "\033[031m Р‘СѓРґСЊ Р»Р°СЃРєР° РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ Сѓ РґС–Р°РїР°Р·РѕРЅС– \033[035m РІС–Рґ 1 РґРѕ " << numberOfRowsInArray << ".\033[0m" << endl;
             continue;
         }
 
@@ -578,7 +578,7 @@ int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray)
 
         if (cin.fail())
         {
-            cout << endl << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << endl << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -586,7 +586,7 @@ int userInputRowAndColumnNumber(string& someText, int& numberOfRowsInArray)
 
         if (userNum < 1 || userNum > numberOfRowsInArray + 1)
         {
-            cout << endl << "\033[031m Будь ласка введіть число у діапазоні \033[035m від 1 до " << numberOfRowsInArray + 1<< ".\033[0m" << endl;
+            cout << endl << "\033[031m Р‘СѓРґСЊ Р»Р°СЃРєР° РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ Сѓ РґС–Р°РїР°Р·РѕРЅС– \033[035m РІС–Рґ 1 РґРѕ " << numberOfRowsInArray + 1<< ".\033[0m" << endl;
             continue;
         }
 
@@ -607,7 +607,7 @@ int userInputNumber(string& someText)
 
         if (cin.fail())
         {
-            cout << endl << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << endl << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -615,7 +615,7 @@ int userInputNumber(string& someText)
 
         if (userNum < 0)
         {
-            cout << endl << "\033[031m Будь ласка введіть число більше\033[035m 0.\033[0m" << endl;
+            cout << endl << "\033[031m Р‘СѓРґСЊ Р»Р°СЃРєР° РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ Р±С–Р»СЊС€Рµ\033[035m 0.\033[0m" << endl;
             continue;
         }
 
@@ -656,16 +656,16 @@ int userChoiceForExerciseThree()
     while (true) {
         cout << endl;
         cout << "\t\t\t\t\033[42mMENU\033[0m" << endl;
-        cout << "\t\t\033[032m[1]\033[0m - Одновимірний у двовимірний" << endl;
-        cout << "\t\t\033[032m[2]\033[0m - Двовимірний у одновимірний" << endl;
-        cout << "\t\t\033[031m[0]\033[0m - вийти з меню" << endl;
-        cout << "\033[033mВведіть ціле число\033[0m" << endl;
-        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cout << "\t\t\033[032m[1]\033[0m - РћРґРЅРѕРІРёРјС–СЂРЅРёР№ Сѓ РґРІРѕРІРёРјС–СЂРЅРёР№" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - Р”РІРѕРІРёРјС–СЂРЅРёР№ Сѓ РѕРґРЅРѕРІРёРјС–СЂРЅРёР№" << endl;
+        cout << "\t\t\033[031m[0]\033[0m - РІРёР№С‚Рё Р· РјРµРЅСЋ" << endl;
+        cout << "\033[033mР’РІРµРґС–С‚СЊ С†С–Р»Рµ С‡РёСЃР»Рѕ\033[0m" << endl;
+        cout << "\033[033mР’РІРµРґС–С‚СЊ РІР°С€ РІРёР±С–СЂ: \033[0m";
         cin >> userChoice;
 
      
         if (cin.fail()) {
-            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear(); 
             cin.ignore(1000, '\n'); 
             continue;
@@ -673,7 +673,7 @@ int userChoiceForExerciseThree()
 
         if (userChoice != 1 && userChoice != 2 && userChoice != 0)
         {
-            cout << "\033[031m Помилка! Будь ласка, введіть 1 або 2.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ 1 Р°Р±Рѕ 2.\033[0m\n";
             continue;
         }
        
@@ -706,7 +706,7 @@ void twoDimensialToOneDimensial(int& rows, int& columns, vector<vector<int>>& ar
 
 void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& arr)
 {
-    string textForNewCols = "Введіть нову кількість рядків для нового масиву(кількість колонок буде визначення автоматино): ";
+    string textForNewCols = "Р’РІРµРґС–С‚СЊ РЅРѕРІСѓ РєС–Р»СЊРєС–СЃС‚СЊ СЂСЏРґРєС–РІ РґР»СЏ РЅРѕРІРѕРіРѕ РјР°СЃРёРІСѓ(РєС–Р»СЊРєС–СЃС‚СЊ РєРѕР»РѕРЅРѕРє Р±СѓРґРµ РІРёР·РЅР°С‡РµРЅРЅСЏ Р°РІС‚РѕРјР°С‚РёРЅРѕ): ";
 
     int totalElements = arr[0].size();
 
@@ -717,12 +717,12 @@ void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& ar
         newRows = userInputNumber(textForNewCols);
         if (newRows > totalElements)
         {
-            cout << endl << "\t\033[041mУВАГА!\033[0m\033[031m   Ви ввели кількість рядків, яка перебільшує кількість символів у масиву. Спробуйте знову.\033[0m" << endl;
+            cout << endl << "\t\033[041mРЈР’РђР“Рђ!\033[0m\033[031m   Р’Рё РІРІРµР»Рё РєС–Р»СЊРєС–СЃС‚СЊ СЂСЏРґРєС–РІ, СЏРєР° РїРµСЂРµР±С–Р»СЊС€СѓС” РєС–Р»СЊРєС–СЃС‚СЊ СЃРёРјРІРѕР»С–РІ Сѓ РјР°СЃРёРІСѓ. РЎРїСЂРѕР±СѓР№С‚Рµ Р·РЅРѕРІСѓ.\033[0m" << endl;
             continue;
         }
         if (totalElements % newRows != 0)
         {
-            cout << endl << "\t\033[041mУВАГА!\033[0m\033[031m   Ви ввели кількість рядків, не ділиться націло на кількість елементів масиву. Спробуйте знову.\033[0m" << endl;
+            cout << endl << "\t\033[041mРЈР’РђР“Рђ!\033[0m\033[031m   Р’Рё РІРІРµР»Рё РєС–Р»СЊРєС–СЃС‚СЊ СЂСЏРґРєС–РІ, РЅРµ РґС–Р»РёС‚СЊСЃСЏ РЅР°С†С–Р»Рѕ РЅР° РєС–Р»СЊРєС–СЃС‚СЊ РµР»РµРјРµРЅС‚С–РІ РјР°СЃРёРІСѓ. РЎРїСЂРѕР±СѓР№С‚Рµ Р·РЅРѕРІСѓ.\033[0m" << endl;
             continue;
         }
 
@@ -746,7 +746,7 @@ void oneDimensialToTwoDimensial(int& rows, int& columns, vector<vector<int>>& ar
 
 void outputDataOfStructure(int& numberOfExistedContucts, string** data)
 {
-    cout << endl << endl << "\t\033[045m Виведення інформації телефонної книги: \033[0m" << endl << endl;
+    cout << endl << endl << "\t\033[045m Р’РёРІРµРґРµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С— С‚РµР»РµС„РѕРЅРЅРѕС— РєРЅРёРіРё: \033[0m" << endl << endl;
 
     for (size_t i = 0; i < numberOfExistedContucts; i++)
     {
@@ -807,7 +807,7 @@ void searchByContactName(int& numberOfExistedContucts, string& request, string**
     }
   
     else
-        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
+        cout << "\033[031mРљРѕРЅС‚Р°РєС‚ РЅРµ Р·РЅР°Р№РґРµРЅРѕ!\033[0m" << endl;
 
     delete[] contuctNames; 
 }
@@ -851,7 +851,7 @@ void searchByNumber(int& numberOfExistedContucts, string& request, string** data
     }
 
     else
-        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
+        cout << "\033[031mРљРѕРЅС‚Р°РєС‚ РЅРµ Р·РЅР°Р№РґРµРЅРѕ!\033[0m" << endl;
 
     delete[] Number;
 }
@@ -869,7 +869,7 @@ string userInputData(string& someText)
 
         if (cin.fail())
         {
-            cout << endl << "\033[031m Помилка! Будь ласка, введіть ім'я контакта.\033[0m\n";
+            cout << endl << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С–Рј'СЏ РєРѕРЅС‚Р°РєС‚Р°.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -877,7 +877,7 @@ string userInputData(string& someText)
 
         if (userStr.empty())
         {
-            cout << endl << "\033[031m Будь ласка введіть текст.\033[0m" << endl;
+            cout << endl << "\033[031m Р‘СѓРґСЊ Р»Р°СЃРєР° РІРІРµРґС–С‚СЊ С‚РµРєСЃС‚.\033[0m" << endl;
             continue;
         }
 
@@ -899,7 +899,7 @@ string userInputContactNumber(string& someText)
 
         if (cin.fail())
         {
-            cout << endl << "\033[031m Помилка! Будь ласка, введіть номер контакта.\033[0m\n";
+            cout << endl << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ РЅРѕРјРµСЂ РєРѕРЅС‚Р°РєС‚Р°.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -907,7 +907,7 @@ string userInputContactNumber(string& someText)
 
         if (userStr.empty())
         {
-            cout << endl << "\033[031m Будь ласка введіть текст.\033[0m" << endl;
+            cout << endl << "\033[031m Р‘СѓРґСЊ Р»Р°СЃРєР° РІРІРµРґС–С‚СЊ С‚РµРєСЃС‚.\033[0m" << endl;
             continue;
         }
 
@@ -923,15 +923,15 @@ void checkResult(int& numberOfExistedContucts, string**& data)
 
     while (true) {
         cout << endl;
-        cout << "\t\t\t\t\033[42mБажаєете переглянути?\033[0m" << endl;
-        cout << "\t\t\033[032m[1]\033[0m - Так" << endl;
-        cout << "\t\t\033[032m[2]\033[0m - Ні" << endl;
-        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cout << "\t\t\t\t\033[42mР‘Р°Р¶Р°С”РµС‚Рµ РїРµСЂРµРіР»СЏРЅСѓС‚Рё?\033[0m" << endl;
+        cout << "\t\t\033[032m[1]\033[0m - РўР°Рє" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - РќС–" << endl;
+        cout << "\033[033mР’РІРµРґС–С‚СЊ РІР°С€ РІРёР±С–СЂ: \033[0m";
         cin >> userChoice1;
 
 
         if (cin.fail()) {
-            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -939,7 +939,7 @@ void checkResult(int& numberOfExistedContucts, string**& data)
 
         if (userChoice1 != 1 && userChoice1 != 2)
         {
-            cout << "\033[031m Помилка! Будь ласка, введіть 1 або 2.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ 1 Р°Р±Рѕ 2.\033[0m\n";
             continue;
         }
 
@@ -964,18 +964,18 @@ void checkResult(int& numberOfExistedContucts, string**& data)
 
 void addNewContact(int& numberOfExistedContucts, string**& data)
 {
-    cout << endl << endl << "\t\033[042m Додавання нового контакту \033[0m" << endl;
+    cout << endl << endl << "\t\033[042m Р”РѕРґР°РІР°РЅРЅСЏ РЅРѕРІРѕРіРѕ РєРѕРЅС‚Р°РєС‚Сѓ \033[0m" << endl;
 
     if (numberOfExistedContucts >= LIMIT_OF_CONUCTS)
     {
-        cout << endl << "\033[041mУВАГА!\033[0m  \033[031mКількість контактів у телефонній книзі перевищує ліміт - " << LIMIT_OF_CONUCTS << "\033[0m" << endl << endl;
+        cout << endl << "\033[041mРЈР’РђР“Рђ!\033[0m  \033[031mРљС–Р»СЊРєС–СЃС‚СЊ РєРѕРЅС‚Р°РєС‚С–РІ Сѓ С‚РµР»РµС„РѕРЅРЅС–Р№ РєРЅРёР·С– РїРµСЂРµРІРёС‰СѓС” Р»С–РјС–С‚ - " << LIMIT_OF_CONUCTS << "\033[0m" << endl << endl;
         return;
     }
 
-    string textForRequest = "Введіть ім'я контакту: ";
+    string textForRequest = "Р’РІРµРґС–С‚СЊ С–Рј'СЏ РєРѕРЅС‚Р°РєС‚Сѓ: ";
     string requestName = userInputData(textForRequest);
 
-    string textForContactNumber = "Введіть номер контакту: ";
+    string textForContactNumber = "Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РєРѕРЅС‚Р°РєС‚Сѓ: ";
     string requestNumber = userInputContactNumber(textForContactNumber);
 
     data[numberOfExistedContucts][0] = requestNumber;
@@ -983,34 +983,34 @@ void addNewContact(int& numberOfExistedContucts, string**& data)
 
     numberOfExistedContucts++;
 
-    cout << endl << "\033[42m Контакт був успішно збережений.\033[0m" << endl;
+    cout << endl << "\033[42m РљРѕРЅС‚Р°РєС‚ Р±СѓРІ СѓСЃРїС–С€РЅРѕ Р·Р±РµСЂРµР¶РµРЅРёР№.\033[0m" << endl;
    
     checkResult(numberOfExistedContucts, data);
 }
 
 void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data)
 {
-    cout << endl << "\t\033[041m ВИДАЛЕННЯ КОНТАКТУ \033[0m" << endl << endl;
+    cout << endl << "\t\033[041m Р’РР”РђР›Р•РќРќРЇ РљРћРќРўРђРљРўРЈ \033[0m" << endl << endl;
 
-    cout << "\033[033mПошук контакту для видалення\033[0m" << endl;
+    cout << "\033[033mРџРѕС€СѓРє РєРѕРЅС‚Р°РєС‚Сѓ РґР»СЏ РІРёРґР°Р»РµРЅРЅСЏ\033[0m" << endl;
 
     int userChoice;
     while (true) {
         cout << endl;
-        cout << "\t\t\033[032m[1]\033[0m - за іменем контакту" << endl;
-        cout << "\t\t\033[032m[2]\033[0m - за номером контакту" << endl;
-        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cout << "\t\t\033[032m[1]\033[0m - Р·Р° С–РјРµРЅРµРј РєРѕРЅС‚Р°РєС‚Сѓ" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - Р·Р° РЅРѕРјРµСЂРѕРј РєРѕРЅС‚Р°РєС‚Сѓ" << endl;
+        cout << "\033[033mР’РІРµРґС–С‚СЊ РІР°С€ РІРёР±С–СЂ: \033[0m";
         cin >> userChoice;
 
         if (cin.fail()) {
-            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
         }
 
         if (userChoice != 1 && userChoice != 2) {
-            cout << "\033[031m Помилка! Будь ласка, введіть 1 або 2.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ 1 Р°Р±Рѕ 2.\033[0m\n";
             continue;
         }
 
@@ -1022,7 +1022,7 @@ void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data)
     {
     case 1: {
         string request;
-        cout << "Введіть ім'я контакту: ";
+        cout << "Р’РІРµРґС–С‚СЊ С–Рј'СЏ РєРѕРЅС‚Р°РєС‚Сѓ: ";
         cin.ignore();
         getline(cin, request);
 
@@ -1041,7 +1041,7 @@ void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data)
 
     case 2: {
         string request;
-        cout << "Введіть номер контакту: ";
+        cout << "Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РєРѕРЅС‚Р°РєС‚Сѓ: ";
         cin.ignore();
         getline(cin, request);
 
@@ -1056,7 +1056,7 @@ void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data)
     }
 
     if (indexToDelete == -1) {
-        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
+        cout << "\033[031mРљРѕРЅС‚Р°РєС‚ РЅРµ Р·РЅР°Р№РґРµРЅРѕ!\033[0m" << endl;
         return;
     }
 
@@ -1068,7 +1068,7 @@ void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data)
     data[numberOfExistedContucts - 1][0] = "";
     data[numberOfExistedContucts - 1][1] = "";
 
-    cout << endl << "\033[41m Контакт був успішно видалений. \033[0m" << endl << endl;
+    cout << endl << "\033[41m РљРѕРЅС‚Р°РєС‚ Р±СѓРІ СѓСЃРїС–С€РЅРѕ РІРёРґР°Р»РµРЅРёР№. \033[0m" << endl << endl;
 
     numberOfExistedContucts--;
 
@@ -1079,27 +1079,27 @@ void deleteDataInPhoneBook(int& numberOfExistedContucts, string**& data)
 
 void changeData(int& numberOfExistedContucts, string**& data)
 {
-    cout << endl << "\t\033[044m ВНЕСЕННЯ ЗМІН \033[0m" << endl << endl;
+    cout << endl << "\t\033[044m Р’РќР•РЎР•РќРќРЇ Р—РњР†Рќ \033[0m" << endl << endl;
 
-    cout << "\033[033mПошук контакту для внесення змін\033[0m" << endl;
+    cout << "\033[033mРџРѕС€СѓРє РєРѕРЅС‚Р°РєС‚Сѓ РґР»СЏ РІРЅРµСЃРµРЅРЅСЏ Р·РјС–РЅ\033[0m" << endl;
 
     int userChoice;
     while (true) {
         cout << endl;
-        cout << "\t\t\033[032m[1]\033[0m - за іменем контакту" << endl;
-        cout << "\t\t\033[032m[2]\033[0m - за номером контакту" << endl;
-        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cout << "\t\t\033[032m[1]\033[0m - Р·Р° С–РјРµРЅРµРј РєРѕРЅС‚Р°РєС‚Сѓ" << endl;
+        cout << "\t\t\033[032m[2]\033[0m - Р·Р° РЅРѕРјРµСЂРѕРј РєРѕРЅС‚Р°РєС‚Сѓ" << endl;
+        cout << "\033[033mР’РІРµРґС–С‚СЊ РІР°С€ РІРёР±С–СЂ: \033[0m";
         cin >> userChoice;
 
         if (cin.fail()) {
-            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
         }
 
         if (userChoice != 1 && userChoice != 2) {
-            cout << "\033[031m Помилка! Будь ласка, введіть 1 або 2.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ 1 Р°Р±Рѕ 2.\033[0m\n";
             continue;
         }
 
@@ -1112,7 +1112,7 @@ void changeData(int& numberOfExistedContucts, string**& data)
     {
     case 1: {
         string request;
-        cout << "Введіть ім'я контакту: ";
+        cout << "Р’РІРµРґС–С‚СЊ С–Рј'СЏ РєРѕРЅС‚Р°РєС‚Сѓ: ";
         cin.ignore();
         getline(cin, request);
 
@@ -1132,7 +1132,7 @@ void changeData(int& numberOfExistedContucts, string**& data)
 
     case 2: {
         string request;
-        cout << "Введіть номер контакту: ";
+        cout << "Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РєРѕРЅС‚Р°РєС‚Сѓ: ";
         cin.ignore();
         getline(cin, request);
 
@@ -1147,7 +1147,7 @@ void changeData(int& numberOfExistedContucts, string**& data)
     }
 
     if (indexToModify == -1) {
-        cout << "\033[031mКонтакт не знайдено!\033[0m" << endl;
+        cout << "\033[031mРљРѕРЅС‚Р°РєС‚ РЅРµ Р·РЅР°Р№РґРµРЅРѕ!\033[0m" << endl;
         return;
     }
     cout << endl;
@@ -1158,48 +1158,48 @@ void changeData(int& numberOfExistedContucts, string**& data)
     cout << "\t-----------------------------------" << endl;
     cout << endl;
 
-    string textForRequest = "\033[0mВведіть \033[032mнове\033[0m ім'я контакту: ";
+    string textForRequest = "\033[0mР’РІРµРґС–С‚СЊ \033[032mРЅРѕРІРµ\033[0m С–Рј'СЏ РєРѕРЅС‚Р°РєС‚Сѓ: ";
     string requestFORNAME = userInputData(textForRequest);
 
-    string textForContactNumber = "\033[0mВведіть \033[032mновий\033[0m номер контакту: ";
+    string textForContactNumber = "\033[0mР’РІРµРґС–С‚СЊ \033[032mРЅРѕРІРёР№\033[0m РЅРѕРјРµСЂ РєРѕРЅС‚Р°РєС‚Сѓ: ";
     string requestFORNUMBER = userInputContactNumber(textForContactNumber);
 
     data[indexToModify][0] = requestFORNUMBER;
     data[indexToModify][1] = requestFORNAME;
 
-    cout << endl << "\033[42m Контакт був успішно змінений. \033[0m" << endl << endl;
+    cout << endl << "\033[42m РљРѕРЅС‚Р°РєС‚ Р±СѓРІ СѓСЃРїС–С€РЅРѕ Р·РјС–РЅРµРЅРёР№. \033[0m" << endl << endl;
 
     // CHECKING
     checkResult(numberOfExistedContucts, data);
 }
 
 void clearScreen() {
-    cout << "\033[2J\033[H";  // Очищає екран і переміщує курсор у верхній лівий кут
+    cout << "\033[2J\033[H";  // РћС‡РёС‰Р°С” РµРєСЂР°РЅ С– РїРµСЂРµРјС–С‰СѓС” РєСѓСЂСЃРѕСЂ Сѓ РІРµСЂС…РЅС–Р№ Р»С–РІРёР№ РєСѓС‚
 }
 
 int userChoiceForExerciseFourPhoneBook()
 {
     int userChoice;
     cout << endl;
-    cout << "\t\t\t\t\033[44m MENU  Робота з телефонною книгою \033[0m" << endl;
-    cout << "\t\t\033[032m[1]\033[0m - виведення даних телефонної книги" << endl;
-    cout << "\t\t\033[032m[2]\033[0m - пошук контакту за ім'ям" << endl;
-    cout << "\t\t\033[032m[3]\033[0m - пошук контакту за номером" << endl;
-    cout << "\t\t\033[032m[4]\033[0m - додати новий контакт" << endl;
-    cout << "\t\t\033[032m[5]\033[0m - видалити контакт" << endl;
-    cout << "\t\t\033[032m[6]\033[0m - зміна даних" << endl;
+    cout << "\t\t\t\t\033[44m MENU  Р РѕР±РѕС‚Р° Р· С‚РµР»РµС„РѕРЅРЅРѕСЋ РєРЅРёРіРѕСЋ \033[0m" << endl;
+    cout << "\t\t\033[032m[1]\033[0m - РІРёРІРµРґРµРЅРЅСЏ РґР°РЅРёС… С‚РµР»РµС„РѕРЅРЅРѕС— РєРЅРёРіРё" << endl;
+    cout << "\t\t\033[032m[2]\033[0m - РїРѕС€СѓРє РєРѕРЅС‚Р°РєС‚Сѓ Р·Р° С–Рј'СЏРј" << endl;
+    cout << "\t\t\033[032m[3]\033[0m - РїРѕС€СѓРє РєРѕРЅС‚Р°РєС‚Сѓ Р·Р° РЅРѕРјРµСЂРѕРј" << endl;
+    cout << "\t\t\033[032m[4]\033[0m - РґРѕРґР°С‚Рё РЅРѕРІРёР№ РєРѕРЅС‚Р°РєС‚" << endl;
+    cout << "\t\t\033[032m[5]\033[0m - РІРёРґР°Р»РёС‚Рё РєРѕРЅС‚Р°РєС‚" << endl;
+    cout << "\t\t\033[032m[6]\033[0m - Р·РјС–РЅР° РґР°РЅРёС…" << endl;
     cout << endl;
-    cout << "\t\t\033[032m[7]\033[0m - очищення екрану" << endl;
-    cout << "\t\t\033[031m[0]\033[0m - вийти з меню" << endl;
+    cout << "\t\t\033[032m[7]\033[0m - РѕС‡РёС‰РµРЅРЅСЏ РµРєСЂР°РЅСѓ" << endl;
+    cout << "\t\t\033[031m[0]\033[0m - РІРёР№С‚Рё Р· РјРµРЅСЋ" << endl;
     cout << endl;
 
     while (true) {
-        cout << "\033[033mВведіть ваш вибір: \033[0m";
+        cout << "\033[033mР’РІРµРґС–С‚СЊ РІР°С€ РІРёР±С–СЂ: \033[0m";
         cin >> userChoice;
 
 
         if (cin.fail()) {
-            cout << "\033[031m Помилка! Будь ласка, введіть число.\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С‡РёСЃР»Рѕ.\033[0m\n";
             cin.clear();
             cin.ignore(1000, '\n');
             continue;
@@ -1207,7 +1207,7 @@ int userChoiceForExerciseFourPhoneBook()
 
         if (userChoice != 1 && userChoice != 2 && userChoice != 3 && userChoice != 4 && userChoice != 5 && userChoice != 6 && userChoice != 7 && userChoice != 0)
         {
-            cout << "\033[031m Помилка! Будь ласка, введіть ціле значення у діапазоні від 0 до 7(включно).\033[0m\n";
+            cout << "\033[031m РџРѕРјРёР»РєР°! Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С†С–Р»Рµ Р·РЅР°С‡РµРЅРЅСЏ Сѓ РґС–Р°РїР°Р·РѕРЅС– РІС–Рґ 0 РґРѕ 7(РІРєР»СЋС‡РЅРѕ).\033[0m\n";
             continue;
         }
 
